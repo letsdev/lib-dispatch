@@ -37,11 +37,12 @@ build() {
     
     local ABI=$1
     local ARCH=$2
+    local TOOL_NAME=$3
+
     echo '######################################'
     echo "building android ${ABI}"
     echo '######################################'
-    
-    local TOOL_NAME=$ARCH-linux-android
+
     local TOOLCHAIN_ROOT_PATH=$CURRENT_PATH/toolchains/${TOOL_NAME}
     local TOOLCHAIN_PATH=$TOOLCHAIN_ROOT_PATH/bin
     local NDK_TOOLCHAIN_BASENAME=$TOOLCHAIN_PATH/$TOOL_NAME
@@ -54,7 +55,7 @@ build() {
         --platform=android-$SDK_VERSION \
         --arch=$ARCH \
         --stl=libc++ \
-        --install-dir=$TOOLCHAIN_ROOT_PATH
+        --install-dir=$TOOLCHAIN_ROOT_PATH --verbose
     fi
     
     export CC=$NDK_TOOLCHAIN_BASENAME-gcc
@@ -73,7 +74,7 @@ build() {
     cp -R $SRC/* $SRC_TARGET
     cd $SRC_TARGET
     
-    cmake -G Ninja \
+   cmake -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SYSTEM_NAME=Android \
     -DCMAKE_SYSROOT=$TOOLCHAIN_ROOT_PATH/sysroot \

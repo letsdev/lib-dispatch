@@ -1,3 +1,6 @@
 .settings
 .classpath
 .project
+dispatch-copy
+toolchains
+settings.json
