@@ -23,13 +23,14 @@ RUN apt-get update \
         python \
         wget \ 
         unzip \
+        clang \
+        systemtap-sdt-dev \
+        libbsd-dev \
+        linux-libc-dev \
+        # add java before maven to prevent downloading java 9
+        openjdk-8-jre-headless \
+        maven \
     && apt-get clean
-
-#Java
-RUN echo "************ Installing Java ************" \
-  && apt-get install -yq openjdk-8-jdk \
-  && apt-get clean \
-  && java -version    
 
 #Android SDK
 RUN echo "************ Installing Android SDK Tools ************" \

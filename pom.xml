@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.letsdev.intern</groupId>
-    <artifactId>dispatch-android</artifactId>
+    <artifactId>lib-dispatch</artifactId>
     <version>1.0</version>
-    <name>Apple dispatch libaray for android</name>
+    <name>Apple dispatch libaray for android and linux</name>
     <!-- organization -->
     <organization>
         <name>let's dev</name>
@@ -94,6 +94,7 @@
                 <configuration>
                     <descriptors>
                         <descriptor>android.xml</descriptor>
+                        <descriptor>linux.xml</descriptor>
                     </descriptors>
                 </configuration>
                 <executions>
