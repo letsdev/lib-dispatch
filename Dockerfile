@@ -1,9 +1,8 @@
 FROM ubuntu:bionic-20180224
 
 ENV ANDROID_SDK_HOME="/opt/android-sdk" \
-    ANDROID_NDK_VERSION="r16b" \
-    #SDK TOOLS 26.0.2 ndk-r16b
-    ANDROID_SDK_TOOLS_VERSION="3859397" \
+    #SDK TOOLS 26.1.1
+    ANDROID_SDK_TOOLS_VERSION="4333796" \
     DEBIAN_FRONTEND="noninteractive"
 
 #Cannot access environment variables in the same time they are defined
