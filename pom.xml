@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.letsdev.intern</groupId>
     <artifactId>lib-dispatch</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <name>Apple dispatch libaray for android and linux</name>
     <!-- organization -->
     <organization>
