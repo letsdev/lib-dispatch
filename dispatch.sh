@@ -3,8 +3,8 @@
 CURRENT_PATH=`pwd`
 SDK_VERSION=21
 PROJECT_NAME=dispatch
-GIT_URL=https://github.com/ephemer/swift-corelibs-libdispatch.git
-GIT_BRANCH=fixAndroidBuild
+GIT_URL=https://github.com/Fischiii/swift-corelibs-libdispatch.git
+GIT_BRANCH=testAndroid
 
 SRC="${CURRENT_PATH}/${PROJECT_NAME}-src"
 LIBS="${CURRENT_PATH}/libs"
