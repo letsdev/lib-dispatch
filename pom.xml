@@ -5,7 +5,7 @@
     <groupId>de.letsdev.intern</groupId>
     <artifactId>lib-dispatch</artifactId>
     <version>1.1</version>
-    <name>Apple dispatch libaray for android and linux</name>
+    <name>Apple dispatch library for android and linux</name>
     <!-- organization -->
     <organization>
         <name>let's dev</name>

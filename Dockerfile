@@ -48,11 +48,21 @@ RUN yes | sdkmanager --licenses
 
 #Build Tools
 RUN echo "************ Installing Build Tools ************" \
-    && sdkmanager 'build-tools;27.0.3'
+    && sdkmanager 'build-tools;28.0.3'
 
-#C++
+# CMake
 RUN echo "************ Installing C++ Support ************" \
-    && sdkmanager 'cmake;3.6.4111459' 'ndk-bundle'
+    && sdkmanager 'cmake;3.6.4111459' 
+
+# NDK
+RUN echo "************ Installing Android NDK 17c ************" \
+    && wget --output-document=$HOME/ndk.zip -q \
+        "https://dl.google.com/android/repository/android-ndk-r17c-linux-x86_64.zip" \
+    && mkdir -p $ANDROID_NDK_HOME \
+    && unzip -q $HOME/ndk.zip -d $ANDROID_NDK_HOME  \
+    && mv $ANDROID_NDK_HOME/android-ndk-r17c/* $ANDROID_NDK_HOME \
+    # Cleanup
+    && rm -f $HOME/ndk.zip && rm -d $ANDROID_NDK_HOME/android-ndk-r17c
 
 RUN useradd -m jenkins -u 112
 USER jenkins
