@@ -16,7 +16,7 @@ node('docker') {
         """
         
         dispatchImage.inside(options) {
-            sh 'mvn deploy'
+            sh 'mvn clean deploy'
         }
     }
 }
