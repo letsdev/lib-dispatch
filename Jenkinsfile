@@ -9,11 +9,10 @@ node('docker') {
 
     stage('build & deploy') {
         def options = """
-        --privileged 
         -v $WORKSPACE:/app 
-        -v $HOME/.m2:/home/jenkins/.m2 
-        -v $HOME/.gitconfig:/home/jenkins/.gitconfig
-        -v $HOME/ld-config:/home/jenkins/ld-config
+        -v $HOME/.m2:/root/.m2 
+        -v $HOME/.gitconfig:/root/.gitconfig
+        -v $HOME/ld-config:/root/ld-config
         """
         
         dispatchImage.inside(options) {
