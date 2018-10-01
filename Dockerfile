@@ -22,6 +22,7 @@ RUN apt-get update \
         python \
         wget \ 
         unzip \
+        zip \
         clang \
         systemtap-sdt-dev \
         libbsd-dev \
@@ -64,6 +65,5 @@ RUN echo "************ Installing Android NDK 17c ************" \
     # Cleanup
     && rm -f $HOME/ndk.zip && rm -d $ANDROID_NDK_HOME/android-ndk-r17c
 
-RUN useradd -m jenkins -u 112
-USER jenkins
-RUN mkdir -p 'home/jenkins/.m2'
+RUN mkdir -p ~/.m2 && mkdir -p /app
+WORKDIR /app
