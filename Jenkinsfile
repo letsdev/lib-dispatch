@@ -1,8 +1,9 @@
 node('docker') {
 
     def dispatchImage
-    stage('Prepare Image') {
-        sh "ls -al"
+    stage('Prepare') {
+        deleteDir()
+        checkout scm
         dispatchImage = docker.build('dispatch')
     }
 
