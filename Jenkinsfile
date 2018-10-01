@@ -2,6 +2,7 @@ node('docker') {
 
     def dispatchImage
     stage('Prepare Image') {
+        sh "ls -al"
         dispatchImage = docker.build('dispatch')
     }
 
