@@ -1,3 +1,6 @@
+@Library('ld-shared')
+import de.letsdev.*
+
 node('docker') {
 
     def dispatchImage
@@ -18,5 +21,11 @@ node('docker') {
         dispatchImage.inside(options) {
             sh 'mvn clean deploy'
         }
+    }
+
+    stage('tag') {
+        def pom = readMavenPom file: 'pom.xml'
+        de.letsdev.git.LdGit ldGit = new de.letsdev.git.LdGit()
+        ldGit.pushTag(pom.version)
     }
 }
