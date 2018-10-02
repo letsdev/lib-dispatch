@@ -1,7 +1,7 @@
 FROM ubuntu:bionic-20180224
 
+#SDK TOOLS 26.1.1
 ENV ANDROID_SDK_HOME="/opt/android-sdk" \
-    #SDK TOOLS 26.1.1
     ANDROID_SDK_TOOLS_VERSION="4333796" \
     DEBIAN_FRONTEND="noninteractive"
 
@@ -12,6 +12,7 @@ ENV PATH="$PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/tools/bin:$ANDROID_SDK
     ANDROID_SDK_ROOT="$ANDROID_SDK_HOME"
 
 #Base
+# add java before maven to prevent downloading java 9
 RUN apt-get update \
     && apt-get install -yq \
         build-essential \
@@ -27,18 +28,16 @@ RUN apt-get update \
         systemtap-sdt-dev \
         libbsd-dev \
         linux-libc-dev \
-        # add java before maven to prevent downloading java 9
         openjdk-8-jre-headless \
         maven \
     && apt-get clean
 
 #Android SDK
 RUN echo "************ Installing Android SDK Tools ************" \
-    && wget --output-document=sdk-tools.zip \
+    && wget --output-document=sdk-tools.zip -q \
         "https://dl.google.com/android/repository/sdk-tools-linux-$ANDROID_SDK_TOOLS_VERSION.zip" \
     && mkdir -p "$ANDROID_SDK_HOME" \
     && unzip -q sdk-tools.zip -d "$ANDROID_SDK_HOME" \
-#Cleanup
     && rm -f sdk-tools.zip
 
 #The `yes` is for accepting all non-standard tool licenses.
@@ -62,7 +61,6 @@ RUN echo "************ Installing Android NDK 17c ************" \
     && mkdir -p $ANDROID_NDK_HOME \
     && unzip -q $HOME/ndk.zip -d $ANDROID_NDK_HOME  \
     && mv $ANDROID_NDK_HOME/android-ndk-r17c/* $ANDROID_NDK_HOME \
-    # Cleanup
     && rm -f $HOME/ndk.zip && rm -d $ANDROID_NDK_HOME/android-ndk-r17c
 
 RUN useradd build -m -u 112
