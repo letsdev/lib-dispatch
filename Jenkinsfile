@@ -16,6 +16,9 @@ node('docker') {
         """
         
         dispatchImage.inside(options) {
+            sh "echo $HOME"
+            sh "ls -al ~"
+            sh "whoami"
             sh 'mvn clean deploy'
         }
     }
