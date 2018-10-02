@@ -18,8 +18,8 @@ before_install:
   - docker run -it -d --user build --name dispatch-container -v `pwd`:/home/build/app -e TRAVIS_TAG=$TRAVIS_TAG android-dispatch bash
 
 script:
-  - docker exec dispatch-container sh /home/build/app/dispatch.sh
-  - docker exec dispatch-container sh /home/build/app/package.sh
+  - docker exec --user build dispatch-container sh /home/build/app/dispatch.sh
+  - docker exec --user build dispatch-container sh /home/build/app/package.sh
 
 before_deploy:
   - git config --local user.name "cwack"
