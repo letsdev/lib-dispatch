@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-LIBS_HOME=/app/libs
+LIBS_HOME=/home/build/app/libs
 
 if [ ! -d "${LIBS_HOME}" ]; then
     echo "Missing library folder"    

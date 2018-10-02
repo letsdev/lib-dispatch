@@ -15,12 +15,11 @@ before_install:
   - export TRAVIS_TAG=`mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec`
   - echo $TRAVIS_TAG  
   - docker build -t android-dispatch .
-  - docker run -it -d --name dispatch-container -v `pwd`:/app -e TRAVIS_TAG=$TRAVIS_TAG android-dispatch bash
+  - docker run -it -d --name dispatch-container -v `pwd`:/home/build/app -e TRAVIS_TAG=$TRAVIS_TAG android-dispatch bash
 
 script:
-  - docker exec dispatch-container ls -al
-  - docker exec dispatch-container sh dispatch.sh
-  - docker exec dispatch-container sh package.sh
+  - docker exec dispatch-container sh /home/build/app/dispatch.sh
+  - docker exec dispatch-container sh /home/build/app/package.sh
 
 before_deploy:
   - git config --local user.name "cwack"
