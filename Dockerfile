@@ -65,5 +65,8 @@ RUN echo "************ Installing Android NDK 17c ************" \
     # Cleanup
     && rm -f $HOME/ndk.zip && rm -d $ANDROID_NDK_HOME/android-ndk-r17c
 
-RUN mkdir -p ~/.m2 && mkdir -p /app
-WORKDIR /app
+RUN useradd build -m -u 112
+USER build
+
+RUN mkdir -p ~/.m2 && mkdir -p ~/app
+WORKDIR /home/build/app

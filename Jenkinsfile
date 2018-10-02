@@ -9,10 +9,10 @@ node('docker') {
 
     stage('build & deploy') {
         def options = """
-        -v $WORKSPACE:/app 
-        -v $HOME/.m2:/.m2 
-        -v $HOME/.gitconfig:/.gitconfig
-        -v $HOME/ld-config:/ld-config
+        -v $WORKSPACE:/home/build/app 
+        -v $HOME/.m2:/home/build/.m2 
+        -v $HOME/.gitconfig:/home/build/.gitconfig
+        -v $HOME/ld-config:/home/build/ld-config
         """
         
         dispatchImage.inside(options) {
