@@ -15,7 +15,7 @@ before_install:
   - export TRAVIS_TAG=`mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec`
   - echo $TRAVIS_TAG  
   - docker build -t android-dispatch .
-  - docker run -it -d -u 112 --name dispatch-container -v `pwd`:/home/build/app -e TRAVIS_TAG=$TRAVIS_TAG android-dispatch bash
+  - docker run -it -d --user build --name dispatch-container -v `pwd`:/home/build/app -e TRAVIS_TAG=$TRAVIS_TAG android-dispatch bash
 
 script:
   - docker exec dispatch-container sh /home/build/app/dispatch.sh
