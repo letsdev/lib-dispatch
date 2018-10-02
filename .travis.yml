@@ -13,7 +13,7 @@ addons:
     
 before_install:
   - export TRAVIS_TAG=`mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec`
-  - mkdir `pwd`/dist
+  - mkdir `pwd`/dist && chmod a+w `pwd`/dist
   - docker build -t android-dispatch .
   - docker run -it -d --user build --name dispatch-container -v `pwd`/dist:/home/build/app/dist -e TRAVIS_TAG=$TRAVIS_TAG android-dispatch bash
 
