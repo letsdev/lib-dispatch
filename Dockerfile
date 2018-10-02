@@ -67,4 +67,6 @@ RUN useradd build -m -u 112
 USER build
 
 RUN mkdir -p /home/build/.m2 && mkdir -p /home/build/app
-WORKDIR /home/build/app
+COPY . /home/build/app/
+
+WORKDIR /home/build/app/
