@@ -33,7 +33,7 @@ deploy:
   file_glob: true
   tag_name: $TRAVIS_TAG
   file: $TRAVIS_BUILD_DIR/libs/*.zip
-  name: Release
+  name: Release-$TRAVIS_TAG
   skip_cleanup: true
   on:
     branch: master
