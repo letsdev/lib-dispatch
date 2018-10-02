@@ -10,13 +10,12 @@ node('docker') {
     stage('build & deploy') {
         def options = """
         -v $WORKSPACE:/app 
-        -v $HOME/.m2:/root/.m2 
-        -v $HOME/.gitconfig:/root/.gitconfig
-        -v $HOME/ld-config:/root/ld-config
+        -v $HOME/.m2:/.m2 
+        -v $HOME/.gitconfig:/.gitconfig
+        -v $HOME/ld-config:/ld-config
         """
         
         dispatchImage.inside(options) {
-            sh "echo $HOME"
             sh "ls -al ~"
             sh "whoami"
             sh 'mvn clean deploy'
