@@ -119,12 +119,12 @@ build_linux() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
-    -DBUILD_SHARED_LIBS=NO \
+    -DBUILD_SHARED_LIBS=YES \
     -DENABLE_TESTING=OFF \
+    -DCMAKE_SYSTEM_NAME=Linux \
     -DCMAKE_INSTALL_PREFIX=${LIBS}/linux
     
     ninja
-    
     cmake -P cmake_install.cmake
 }
 
